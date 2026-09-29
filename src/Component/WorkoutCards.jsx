@@ -19,7 +19,7 @@ const WorkoutCards = async () => {
             href={`/exercise/${workoutinfo.id}`}
             className="group block w-full overflow-hidden rounded-xl border border-base-300 bg-[#15171d] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="h-[145px] w-full overflow-hidden">
+            <div className="h-[300px] w-full overflow-hidden">
               <Image
                 src={workoutinfo.image}
                 alt={workoutinfo.name}
