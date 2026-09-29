@@ -57,7 +57,7 @@ const Myplancard = ({ props, tab }) => {
     });
   };
   return (
-    <div className="card card-side w-full bg-[#14171E] border border-[#272c35] rounded-2xl shadow-sm p-3">
+    <div className="card card-side w-full bg-[#14171E] border border-[#272c35] rounded-2xl shadow-sm p-3 mb-4">
       <Image
         src={props.image}
         alt={props.name}
@@ -72,7 +72,7 @@ const Myplancard = ({ props, tab }) => {
             {props.name}
           </h2>
 
-          <p className="text-gray-400 text-lg mt-2">Medicine Ball</p>
+          <p className="text-gray-400 text-lg mt-2">{props.equipment}</p>
 
           <div className="flex items-center gap-4 mt-2 text-md pt-2 text-gray-300">
             <span className="flex items-center gap-1">
@@ -104,7 +104,7 @@ const Myplancard = ({ props, tab }) => {
                   </defs>
                 </svg>
               </span>
-              8 min
+              {props.duration}
             </span>
 
             <span className="flex items-center gap-1">
@@ -124,7 +124,7 @@ const Myplancard = ({ props, tab }) => {
                   />
                 </svg>
               </span>
-              70 kcal
+              {props.caloriesBurned}
             </span>
 
             <span className="flex items-center gap-1">
@@ -145,7 +145,7 @@ const Myplancard = ({ props, tab }) => {
                   />
                 </svg>
               </span>
-              4.1
+              {props.rating}
             </span>
           </div>
         </div>
@@ -158,12 +158,16 @@ const Myplancard = ({ props, tab }) => {
             View Details
           </Link>
 
-          <button
-            onClick={() => workoutdone(props.id)}
-            className="h-9 px-5 rounded-full bg-lime-400 hover:bg-lime-300 text-black text-xs font-medium transition"
-          >
-            ✓ &nbsp; Mark as Done
-          </button>
+          {tab === "today" ? (
+            <button
+              onClick={() => workoutdone(props.id)}
+              className="h-9 px-5 rounded-full bg-lime-400 hover:bg-lime-300 text-black text-xs font-medium transition"
+            >
+              ✓ &nbsp; Mark as Done
+            </button>
+          ) : (
+            ""
+          )}
 
           <button
             onClick={() => removeworkout(props.id)}
