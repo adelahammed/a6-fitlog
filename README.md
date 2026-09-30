@@ -2,7 +2,7 @@
 
 A simple workout management website that helps users organize and maintain their daily workout plans.
 
-## Tech Stack
+## Technologies
 
 * Next.js
 * React
