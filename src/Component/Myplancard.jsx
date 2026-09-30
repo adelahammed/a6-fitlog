@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { Bounce, toast } from "react-toastify";
+import CardPlaceholder from "./CardPlaceholder";
 
 const Myplancard = ({ props, tab }) => {
   const { todaysitem, settodaysitem } = useContext(TodoContext);

@@ -3,12 +3,29 @@ import React, { useContext, useState } from "react";
 import { TodoContext } from "../Context/TodaysContext";
 import { SavedItemContext } from "../Context/SavedContext";
 import Myplancard from "@/Component/Myplancard";
+import CardPlaceholder from "@/Component/CardPlaceholder";
 
 const page = () => {
   const { todaysitem } = useContext(TodoContext);
   const { saveditem } = useContext(SavedItemContext);
   const [activeTab, setActiveTab] = useState("today");
+  const [sortBy, setSortBy] = useState("duration");
 
+  const sortItems = (items) => {
+    const sortedItems = [...items];
+
+    if (sortBy === "duration") {
+      sortedItems.sort((a, b) => b.duration - a.duration);
+    } else if (sortBy === "rating") {
+      sortedItems.sort((a, b) => b.rating - a.rating);
+    } else if (sortBy === "calories") {
+      sortedItems.sort((a, b) => b.caloriesBurned - a.caloriesBurned);
+    }
+
+    return sortedItems;
+  };
+  const sortedTodaysItem = sortItems(todaysitem);
+  const sortedSavedItem = sortItems(saveditem);
   return (
     <div className="container mx-auto px-5 py-10">
       <div className="pb-10">
@@ -52,8 +69,22 @@ const page = () => {
           </div>
         </div>
       </div>
+      <div className="pt-6 flex gap-2 items-center justify-end">
+        <div>
+          <p className="text-gray-500">Sort By</p>
+        </div>
+        <select
+          defaultValue={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="select max-w-40"
+        >
+          <option value="duration">Duration</option>
+          <option value="rating">Rating</option>
+          <option value="calories">Calories</option>
+        </select>
+      </div>
 
-      <div className="tabs tabs-lift py-8">
+      <div className="tabs tabs-lift py-8 mt-[-65px]">
         <input
           type="radio"
           name="my_tabs_3"
@@ -63,9 +94,13 @@ const page = () => {
           onChange={() => setActiveTab("today")}
         />
         <div className="tab-content py-6">
-          {todaysitem.map((item) => {
-            return <Myplancard props={item} tab="today" key={item.id} />;
-          })}
+          {todaysitem.length > 0 ? (
+            sortedTodaysItem.map((item) => {
+              return <Myplancard props={item} tab="today" key={item.id} />;
+            })
+          ) : (
+            <CardPlaceholder />
+          )}
         </div>
 
         <input
@@ -76,9 +111,13 @@ const page = () => {
           onChange={() => setActiveTab("saved")}
         />
         <div className="tab-content  py-6">
-          {saveditem.map((item) => {
-            return <Myplancard props={item} key={item.id} />;
-          })}
+          {saveditem.length > 0 ? (
+            sortedSavedItem.map((item) => {
+              return <Myplancard props={item} tab="saved" key={item.id} />;
+            })
+          ) : (
+            <CardPlaceholder />
+          )}
         </div>
       </div>
     </div>
