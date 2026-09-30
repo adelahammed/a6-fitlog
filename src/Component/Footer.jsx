@@ -4,8 +4,8 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="container mx-auto footer sm:footer-horizontal text-neutral-content justify-between items-center p-4">
-      <aside className="grid-flow-col items-center">
+    <footer className="container mx-auto footer sm:footer-horizontal text-neutral-content justify-between max-sm:justify-center items-center p-4">
+      <aside className="grid-flow-col max-sm:justify-center items-center max-sm:mx-auto">
         <Image alt="footer-logo" src={logo} />
       </aside>
       <aside>

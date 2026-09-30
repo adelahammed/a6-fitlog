@@ -11,7 +11,7 @@ const WorkoutCards = async () => {
   const Wdata = await getWorkout();
 
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-8">
       {Wdata.map((workoutinfo, ind) => {
         return (
           <Link

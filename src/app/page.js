@@ -6,8 +6,8 @@ import WorkoutCards from "@/Component/WorkoutCards";
 const page = () => {
   return (
     <div>
-      <section className="hero bg-base-200 py-24">
-        <div className="hero-content grid grid-cols-2 gap-5 container mx-auto p-20 bg-[#15171D] rounded-lg">
+      <section className="hero py-24 px-5">
+        <div className="hero-content bg-base-200 grid grid-cols-2 max-sm:grid-cols-1 gap-5 max-sm:gap-10 container mx-auto p-20 max-md:p-10 bg-[#15171D] rounded-lg">
           <div>
             <p className="text-[#ccff00] pb-3">WORKOUT LIBRARY</p>
             <h1 className="text-5xl font-bold">

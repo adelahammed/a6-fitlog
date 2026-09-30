@@ -58,24 +58,26 @@ const Myplancard = ({ props, tab }) => {
     });
   };
   return (
-    <div className="card card-side w-full bg-[#14171E] border border-[#272c35] rounded-2xl shadow-sm p-3 mb-4">
+    <div className="card card-side w-full bg-[#14171E] border border-[#272c35] rounded-2xl shadow-sm p-3 mb-4 flex-col sm:flex-row">
       <Image
         src={props.image}
         alt={props.name}
         width={128}
         height={72}
-        className="w-60 h-[150px] shrink-0 rounded-xl object-cover"
+        className="w-full sm:w-60 h-48 sm:h-[150px] shrink-0 rounded-xl object-cover"
       />
 
-      <div className="card-body p-0 pl-4 flex-row items-center justify-between gap-4">
+      <div className="card-body p-0 pt-3 sm:pt-0 sm:pl-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 min-w-0">
         <div className="min-w-0">
-          <h2 className="text-white text-3xl font-bold uppercase tracking-wide">
+          <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-wide truncate">
             {props.name}
           </h2>
 
-          <p className="text-gray-400 text-lg mt-2">{props.equipment}</p>
+          <p className="text-gray-400 text-sm sm:text-base lg:text-lg mt-2">
+            {props.equipment}
+          </p>
 
-          <div className="flex items-center gap-4 mt-2 text-md pt-2 text-gray-300">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 pt-2 text-sm sm:text-md text-gray-300">
             <span className="flex items-center gap-1">
               <span className="text-lime-400">
                 <svg
@@ -151,23 +153,21 @@ const Myplancard = ({ props, tab }) => {
           </div>
         </div>
 
-        <div className="card-actions items-center gap-3 shrink-0">
+        <div className="card-actions flex-wrap items-center gap-2 sm:gap-3 shrink-0">
           <Link
             href={`/exercise/${props.id}`}
-            className="flex items-center h-9 px-4 rounded-full border border-[#353b45] bg-transparent text-gray-200 text-xs hover:bg-[#1d222a] transition"
+            className="flex items-center justify-center h-9 px-4 rounded-full border border-[#353b45] bg-transparent text-gray-200 text-xs hover:bg-[#1d222a] transition"
           >
             View Details
           </Link>
 
-          {tab === "today" ? (
+          {tab === "today" && (
             <button
               onClick={() => workoutdone(props.id)}
-              className="h-9 px-5 rounded-full bg-lime-400 hover:bg-lime-300 text-black text-xs font-medium transition"
+              className="h-9 px-4 sm:px-5 rounded-full bg-lime-400 hover:bg-lime-300 text-black text-xs font-medium transition"
             >
               ✓ &nbsp; Mark as Done
             </button>
-          ) : (
-            ""
           )}
 
           <button

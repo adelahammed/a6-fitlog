@@ -69,7 +69,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className="pt-6 flex gap-2 items-center justify-end">
+      <div className="pt-6 flex gap-2 items-center lg:justify-end">
         <div>
           <p className="text-gray-500">Sort By</p>
         </div>
@@ -84,7 +84,7 @@ const page = () => {
         </select>
       </div>
 
-      <div className="tabs tabs-lift py-8 mt-[-65px]">
+      <div className="tabs tabs-lift py-8 lg:mt-[-65px]">
         <input
           type="radio"
           name="my_tabs_3"
